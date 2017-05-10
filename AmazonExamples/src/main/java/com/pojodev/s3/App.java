@@ -75,7 +75,7 @@ public class App {
 	}
 	public static void main(String[] args) throws IOException {
 		App app = new App();
-		app.init("AKIAIF6IO37MV42PVSRA", "036OczLXiz5RbsLnhNjuFogCk5E6z4ut641/2mKj");
+		app.init("accesskey", "secretkey");
 		app.listAllBuckets();
 	}
 }
