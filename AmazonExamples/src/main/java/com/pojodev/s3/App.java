@@ -51,7 +51,7 @@ public class App {
 			System.out.println(" ------------------------");
 		}
 		System.out.println("Uploading UploadIntoS3.txt into S3 bucket: " + bucketName);
-		this.uploadFileS3("D:/UploadIntoS3.txt", bucketName, "UploadIntoS3.txt");
+		this.uploadFileS3("UploadIntoS3.txt", bucketName, "UploadIntoS3.txt");
 	}
 
 	public void readFromS3(String bucketName, String key) throws IOException {
@@ -68,7 +68,7 @@ public class App {
 	}
 
 	public void uploadFileS3(String uploadFileName, String bucketName, String keyName) {
-		File file = new File(uploadFileName);
+		File file = new File(ClassLoader.getSystemResource(uploadFileName).getFile());;
         this.s3.putObject(new PutObjectRequest(
         		                 bucketName, keyName, file));
         
