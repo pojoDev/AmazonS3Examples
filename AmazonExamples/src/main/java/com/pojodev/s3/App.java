@@ -76,6 +76,7 @@ public class App {
 	public static void main(String[] args) throws IOException {
 		App app = new App();
 		app.init("accesskey", "secretkey");
-		app.listAllBuckets();
+		//app.listAllBuckets();
+		app.listBucketContent("pojodevbucket0000");
 	}
 }
