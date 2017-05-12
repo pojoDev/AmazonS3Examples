@@ -1,6 +1,7 @@
 package com.pojodev.sns;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -16,6 +17,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 
 public class App {
@@ -36,6 +38,7 @@ public class App {
 			this.parseRecord(line);
 		}
 		this.writeIntoFiles();
+		this.uploadFileS3(bucketName);
 	}
 
 	private void parseRecord(String record) {
@@ -68,9 +71,18 @@ public class App {
 		}
 	}
 
+	public void uploadFileS3(String bucketName) {
+		
+		for (String groupName : this.groupIdMap.keySet()) {
+			String fileName = groupName.replace(" ", "_");
+			File file = new File(fileName);
+			this.s3.putObject(new PutObjectRequest(bucketName, fileName+".txt", file));
+		}
+	}
+
 	public static void main(String[] args) throws IOException {
 		App app = new App();
-		app.init("AKIAI7W64TVDCVBBUIEQ", "qF0fEejUN76vapfqj+htZVhvngCF/Qfrw9qNgYDG");
+		app.init("a", "b");
 		app.parseS3File("pojodevbucket0000", "EmailGroup.txt");
 	}
 }
