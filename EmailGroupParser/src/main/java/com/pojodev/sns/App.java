@@ -82,7 +82,7 @@ public class App {
 
 	public static void main(String[] args) throws IOException {
 		App app = new App();
-		app.init("a", "b");
+		app.init("AKIAIMZLEVWWZGTJBMAQ", "7He8fQDFJMhNK7sRHgjN+LgXLQfjNxWUSL26RBQk");
 		app.parseS3File("pojodevbucket0000", "EmailGroup.txt");
 	}
 }
