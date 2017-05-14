@@ -15,7 +15,7 @@ public class ONSEmailGroupParserHandler implements RequestHandler<S3Event, Strin
 		String key = event.getRecords().get(0).getS3().getObject().getKey();
 		try {
 			ONSEmailGroupParser parser = new ONSEmailGroupParser();
-			context.getLogger().log("Bucket: " + bucket + " key: " + key);
+			context.getLogger().log("Bucket: " + bucket + " key: " + key + "\n");
 			parser.parseS3File(context, bucket, key);
 		} catch (Exception e) {
 			e.printStackTrace();
