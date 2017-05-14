@@ -77,9 +77,8 @@ public class ONSEmailGroupParser {
 		for (String groupName : this.groupIdMap.keySet()) {
 			String fileName = groupName.replace(" ", "_");
 			fileName = groupName.replace("/", "_");
-			fileName = "/tmp/" + fileName;
-			File file = new File(fileName);
-			s3Client.putObject(new PutObjectRequest(bucketName, fileName, file));
+			File file = new File("/tmp/" + fileName);
+			s3Client.putObject(new PutObjectRequest(bucketName, "emailGroupFiles/" + fileName, file));
 		}
 	}
 	
@@ -89,7 +88,7 @@ public class ONSEmailGroupParser {
 			fileName = groupName.replace("/", "_");
 			
 			int noOfContacts = this.groupIdMap.get(groupName).size();
-			context.getLogger().log("File Name: " + fileName + " No Of Contacts: " + noOfContacts);
+			context.getLogger().log("File Name: " + fileName + " No Of Contacts: " + noOfContacts + "\n");
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class ONSEmailGroupParserHandler implements RequestHandler<S3Event, Strin
 
     @Override
     public String handleRequest(S3Event event, Context context) {
-        context.getLogger().log("Received event: " + event);
+        context.getLogger().log("Received event: " + event + "\n");
 
         // Get the object from the event and show its content type
         String bucket = event.getRecords().get(0).getS3().getBucket().getName();
