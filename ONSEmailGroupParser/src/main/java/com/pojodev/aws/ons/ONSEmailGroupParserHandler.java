@@ -12,13 +12,6 @@ public class ONSEmailGroupParserHandler implements RequestHandler<S3Event, Strin
 
     private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
 
-    public ONSEmailGroupParserHandler() {}
-
-    // Test purpose only.
-    ONSEmailGroupParserHandler(AmazonS3 s3) {
-        this.s3 = s3;
-    }
-
     @Override
     public String handleRequest(S3Event event, Context context) {
         context.getLogger().log("Received event: " + event);
