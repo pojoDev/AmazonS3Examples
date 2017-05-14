@@ -78,7 +78,7 @@ public class ONSEmailGroupParser {
 			String fileName = groupName.replace(" ", "_");
 			fileName = groupName.replace("/", "_");
 			File file = new File("/tmp/" + fileName);
-			s3Client.putObject(new PutObjectRequest(bucketName, "emailGroupFiles/" + fileName, file));
+			s3Client.putObject(new PutObjectRequest(bucketName, "EmailGroupFiles/" + fileName, file));
 		}
 	}
 	
